@@ -10,4 +10,11 @@ describe Oystercard do
     end
   end
 
+  describe '#top_up' do
+    it 'increases the balance of the card by the specified amount' do
+      card.top_up(100)
+      expect(card.balance).to eq 100
+    end
+  end
+
 end
