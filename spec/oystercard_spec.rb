@@ -10,6 +10,7 @@ describe Oystercard do
   it { is_expected.to respond_to(:top_up).with(1).argument }
   it { is_expected.to respond_to(:maximum_balance) }
   it { is_expected.to respond_to(:touch_in) }
+  it { is_expected.to respond_to(:in_journey) }
 
   describe '#balance' do
     it 'returns the balance' do
@@ -30,6 +31,19 @@ describe Oystercard do
 
     it 'throws an exception if the new balance exceeds the limit' do
       expect { card.top_up 100 }.to raise_error "New balance would exceed £#{MAXIMUM_BALANCE} maximum"
+    end
+  end
+
+  describe '#touch_in' do
+    it 'sets an instance variable, @in_journey to true' do
+      card.touch_in
+      expect(card.in_journey).to eq true
+    end
+  end
+
+  describe '#in_journey?' do
+    it 'returns true or false depending on whether a card is on a journey or not' do
+      expect(card.in_journey?).to be(true).or be(false)
     end
   end
 
