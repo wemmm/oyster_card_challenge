@@ -24,7 +24,11 @@ describe Oystercard do
 
   describe '#top_up' do
     it 'increases the balance of the card by the specified amount' do
-      expect { card.top_up 100 }.to change { card.balance }.by 100
+      expect { card.top_up 10 }.to change { card.balance }.by 10
+    end
+
+    it 'throws an exception if the new balance exceeds the limit' do
+      expect { card.top_up 100 }.to raise_error "Your new balance would exceed the maximum balance"
     end
   end
 
