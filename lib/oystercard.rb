@@ -8,7 +8,7 @@ class Oystercard
   end
 
   def top_up(amount)
-    raise "Your new balance would exceed the maximum balance" if @balance + amount > @maximum_balance
+    raise "New balance would exceed £#{@maximum_balance} maximum" if @balance + amount > @maximum_balance
     @balance += amount
   end
 

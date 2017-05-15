@@ -28,7 +28,7 @@ describe Oystercard do
     end
 
     it 'throws an exception if the new balance exceeds the limit' do
-      expect { card.top_up 100 }.to raise_error "Your new balance would exceed the maximum balance"
+      expect { card.top_up 100 }.to raise_error "New balance would exceed £#{MAXIMUM_BALANCE} maximum"
     end
   end
 
